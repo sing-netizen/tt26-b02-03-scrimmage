@@ -1,715 +1,613 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>乒乓球內部賽對陣表 | 五局三勝 11分制</title>
+    <title>乒乓球內部賽對陣表 | 五局三勝11分制</title>
     <style>
         * {
             box-sizing: border-box;
-            font-family: system-ui, 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', sans-serif;
+            font-family: system-ui, 'Segoe UI', '微軟正黑體', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
         }
         body {
-            background: #1a472a;
-            background-image: radial-gradient(circle at 10% 20%, #2c5e3a, #0e2a1a);
+            background: #1a472a; /* 深桌球綠 */
             margin: 0;
-            padding: 24px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 20px;
+            color: #1e2a2e;
         }
         .container {
             max-width: 1400px;
-            width: 100%;
-            background: rgba(255,248,225,0.95);
-            border-radius: 48px;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,200,0.6);
-            padding: 24px 28px 40px;
-            backdrop-filter: blur(0px);
-            transition: all 0.2s;
+            margin: 0 auto;
+            background: #fef9e8;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+            padding: 20px 24px 32px 24px;
         }
         h1 {
             text-align: center;
-            margin: 0 0 6px 0;
-            font-size: 2.2rem;
-            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 2rem;
+            color: #b22234;
             letter-spacing: 2px;
-            color: #ffd966;
-            text-shadow: 4px 4px 0 #b45f1b;
-            background: #2e5e2c;
-            display: inline-block;
-            width: 100%;
-            padding: 12px 0;
-            border-radius: 60px;
-            background: linear-gradient(135deg, #1e3c1c, #2b5e2a);
-            box-shadow: inset 0 -2px 0 #0a2a0a, 0 6px 12px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        h1 small {
+            font-size: 0.9rem;
+            background: #2c3e2f;
+            color: #f5e7c8;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-weight: normal;
         }
         .sub {
             text-align: center;
-            font-size: 1rem;
-            background: #efe3c9;
-            display: inline-block;
-            width: auto;
-            margin: 8px auto 18px;
-            padding: 6px 20px;
-            border-radius: 40px;
-            color: #2c4724;
+            color: #2c5e2f;
             font-weight: bold;
-            box-shadow: inset 0 1px 3px #fff8, 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 28px;
+            border-bottom: 2px dashed #c0b28a;
+            padding-bottom: 10px;
         }
-        .rule-badge {
-            display: flex;
-            justify-content: center;
-            gap: 28px;
-            background: #2f2e2a;
-            padding: 10px 20px;
-            border-radius: 48px;
-            margin: 10px 0 28px 0;
-            color: #f9e7c2;
-            font-weight: bold;
-            flex-wrap: wrap;
-        }
-        .rule-badge span {
-            background: #00000055;
-            padding: 5px 14px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            backdrop-filter: blur(2px);
-        }
-        .round-title {
-            font-size: 1.6rem;
-            font-weight: bold;
-            background: #283b1c;
-            display: inline-block;
-            padding: 5px 24px;
-            border-radius: 40px;
-            color: #fff0bc;
-            margin: 20px 0 15px 0;
-            letter-spacing: 2px;
-            box-shadow: inset 0 1px 2px #739e5f, 0 3px 6px rgba(0,0,0,0.2);
-        }
-        .matches-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-            margin-bottom: 42px;
-        }
-        .match-card {
-            background: #fef6e6;
+        /* 查詢區塊 */
+        .query-area {
+            background: #e9f0e3;
             border-radius: 28px;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-            overflow: hidden;
-            transition: all 0.15s;
-            border: 1px solid #ffeaac;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 18px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-        .match-header {
-            background: #d9c48b;
-            padding: 8px 20px;
+        .query-item {
+            flex: 2;
+            min-width: 180px;
+        }
+        .query-item label {
+            display: block;
             font-weight: bold;
-            color: #2c2b26;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 6px;
-            border-bottom: 2px solid #b68b40;
+            margin-bottom: 6px;
+            color: #2d4a22;
         }
-        .match-id {
-            background: #4a391c;
-            color: #ffe3a3;
-            padding: 2px 12px;
-            border-radius: 50px;
-            font-size: 0.8rem;
+        .query-item input, .query-item select {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 48px;
+            border: 1px solid #b7ad7a;
+            background: white;
+            font-size: 1rem;
         }
-        .best-of {
-            font-size: 0.75rem;
-            background: #ecdca8;
-            padding: 2px 12px;
+        .query-item button {
+            background: #2c6e2c;
+            border: none;
+            color: white;
+            padding: 10px 20px;
             border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1rem;
         }
-        .players-area {
-            display: flex;
-            flex-wrap: wrap;
+        .query-item button:hover {
+            background: #1f4f1f;
+            transform: scale(1.02);
         }
-        .player-col {
-            flex: 1;
-            min-width: 200px;
-            padding: 18px 12px 16px 20px;
-            border-right: 1px solid #eddbba;
+        .result-card {
+            background: #fff7e8;
+            border-radius: 24px;
+            padding: 12px 20px;
+            margin-top: 12px;
+            border-left: 12px solid #c49a6c;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        .player-col:last-child {
-            border-right: none;
+        .result-card h3 {
+            margin: 0 0 8px 0;
+            color: #8b5a2b;
+        }
+        .match-schedule {
+            font-size: 1rem;
+            line-height: 1.4;
+            color: #2d3e2b;
+        }
+        /* 對陣表格整體 */
+        .bracket-wrapper {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        .match-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff6ea;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .match-table th, .match-table td {
+            border: 1px solid #ddceaa;
+            padding: 12px 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .match-table th {
+            background: #c7b27b;
+            color: #2c2b26;
+            font-size: 1rem;
+            font-weight: 800;
         }
         .player-name {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
+            font-weight: 700;
+            background: #fef1df;
         }
-        .player-name .name-tag {
-            background: #2f5e2a;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 40px;
-            font-size: 0.9rem;
-        }
-        .games-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 12px 0 10px;
-            align-items: center;
-        }
-        .game-box {
-            background: #fff2df;
-            border-radius: 20px;
-            padding: 6px 10px;
-            text-align: center;
-            width: 70px;
-            box-shadow: inset 0 1px 2px #bba87a, 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .game-label {
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: #947e4c;
-        }
-        .game-score {
-            font-size: 1.5rem;
-            font-weight: 800;
-            font-family: monospace;
-            background: #f9f0dd;
-            border: none;
+        .score-input {
             width: 60px;
             text-align: center;
-            padding: 4px 0;
-            border-radius: 24px;
-            margin-top: 4px;
             font-weight: bold;
-            color: #2c3e1f;
-        }
-        .game-score:focus {
-            outline: 2px solid #f5b042;
-            background: #fff7e8;
-        }
-        .win-badge {
-            font-size: 0.8rem;
-            background: #4b8c3a;
-            color: white;
-            border-radius: 36px;
-            padding: 4px 12px;
-            display: inline-block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        .match-result-status {
-            font-size: 0.75rem;
-            padding: 4px 8px;
-            background: #e7dbbc;
-            border-radius: 50px;
-            width: fit-content;
-        }
-        .action-btn {
-            background: #7c5f34;
-            border: none;
-            color: white;
-            font-weight: bold;
-            padding: 6px 16px;
-            border-radius: 40px;
-            margin-top: 12px;
-            cursor: pointer;
-            transition: 0.1s linear;
-            font-size: 0.75rem;
-        }
-        .action-btn:hover {
-            background: #a77c3e;
-            transform: scale(0.97);
-        }
-        .ranking-area {
-            background: #2f4324;
-            border-radius: 32px;
-            padding: 20px 24px;
-            margin-top: 20px;
-            color: #faf0cf;
-        }
-        .ranking-area h3 {
-            margin: 0 0 16px 0;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .rank-table {
-            width: 100%;
-            background: #fff8ec;
-            border-radius: 24px;
-            border-collapse: collapse;
-            overflow: hidden;
-            color: #2c3e1f;
-        }
-        .rank-table th, .rank-table td {
-            padding: 12px 10px;
-            text-align: center;
-            border-bottom: 1px solid #dfcfaa;
-        }
-        .rank-table th {
-            background: #cbbf84;
-            color: #25201a;
-            font-weight: 800;
-        }
-        .rank-table tr:last-child td {
-            border-bottom: none;
-        }
-        .gold-medal {
-            background: #ffd966;
-            font-weight: bold;
-            color: #8a6200;
-        }
-        .footer-buttons {
-            display: flex;
-            justify-content: flex-end;
-            gap: 18px;
-            margin-top: 30px;
-        }
-        .global-btn {
-            background: #4a6b30;
-            padding: 10px 24px;
-            border: none;
-            border-radius: 60px;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
+            padding: 6px 0;
+            border-radius: 20px;
+            border: 1px solid #bc9a6c;
+            background: white;
             font-size: 0.9rem;
-            transition: 0.08s linear;
         }
-        .global-btn.reset-btn {
-            background: #7a5a3a;
+        .score-cell {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .set-detail {
+            font-size: 0.75rem;
+            color: #7a5a3a;
+            margin-top: 4px;
+        }
+        .update-btn {
+            background: #5f7f4e;
+            border: none;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 28px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+        .rank-badge {
+            background: #f3c26b;
+            border-radius: 40px;
+            padding: 4px 8px;
+            font-weight: bold;
+            display: inline-block;
+            font-size: 0.85rem;
+        }
+        .winner-tag {
+            font-size: 0.7rem;
+            background: #d9b650;
+            border-radius: 16px;
+            padding: 2px 8px;
+            margin-left: 5px;
+        }
+        .completed {
+            background-color: #e6f0e0;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #7e6b47;
         }
         @media (max-width: 780px) {
             .container {
-                padding: 16px;
+                padding: 12px;
             }
-            .players-area {
-                flex-direction: column;
+            .match-table th, .match-table td {
+                padding: 8px 4px;
+                font-size: 0.8rem;
             }
-            .player-col {
-                border-right: none;
-                border-bottom: 1px solid #e0cfae;
-            }
-            .game-box {
-                width: 60px;
-            }
-            .game-score {
-                width: 52px;
-                font-size: 1.2rem;
+            .score-input {
+                width: 48px;
             }
         }
-        button {
-            user-select: none;
-        }
-        .versus-symbol {
-            font-size: 0.9rem;
-            background: #cbb56b;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 4px;
+        button:active {
+            transform: scale(0.97);
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>🏓 乒乓球內部賽 · 對陣表 🏓</h1>
-    <div style="text-align:center">
-        <div class="sub">📋 參賽選手：13人 · 單循環積分賽</div>
-    </div>
-    <div class="rule-badge">
-        <span>✅ 五局三勝制 (先贏3局者勝)</span>
-        <span>🏅 每局11分 (Deuce 需贏2分)</span>
-        <span>✏️ 點擊分數格輸入每局比分</span>
-        <span>🏆 自動計算勝場/積分/名次</span>
-    </div>
+    <h1>🏓 乒乓球內部賽對陣表 <small>五局三勝制・11分</small></h1>
+    <div class="sub">⭐ 每場比賽勝方得1分 (先勝3局為勝) | 即時更新排名 & 名次</div>
 
-    <div id="matchesContainer" class="matches-grid">
-        <!-- 動態產生所有對戰組合 -->
+    <!-- 參賽者查詢專區 -->
+    <div class="query-area">
+        <div class="query-item">
+            <label>🔍 請輸入你的姓名：</label>
+            <input type="text" id="searchName" placeholder="例：羅嘉熙" autocomplete="off">
+        </div>
+        <div class="query-item">
+            <button id="searchBtn">📋 顯示我的比賽賽程</button>
+        </div>
+        <div class="query-item">
+            <button id="clearSearchBtn" style="background:#a56b2f;">🗑️ 清除查詢</button>
+        </div>
     </div>
+    <div id="searchResultArea"></div>
 
-    <div class="ranking-area" id="rankingArea">
-        <h3>📊 最終名次 & 戰績表</h3>
-        <table class="rank-table" id="rankTable">
+    <!-- 對陣表核心區域 -->
+    <div class="bracket-wrapper">
+        <table class="match-table" id="matchTable">
             <thead>
-                <tr><th>名次</th><th>球員</th><th>勝場</th><th>負場</th><th>總得分差</th><th>局分統計(勝-負)</th></tr>
+                <tr><th>場次</th><th>選手A</th><th>選手B</th><th>比分 (局分)</th><th>操作</th><th>勝者 / 狀態</th></tr>
             </thead>
-            <tbody id="rankTbody">
-                <tr><td colspan="6">請輸入比分，自動更新排名</td></tr>
+            <tbody id="matchTableBody">
+                <!-- 動態載入 -->
             </tbody>
         </table>
     </div>
-    <div class="footer-buttons">
-        <button class="global-btn reset-btn" id="resetAllBtn">🧹 重置所有比分</button>
-        <button class="global-btn" id="refreshRankBtn">🔄 刷新排名 & 結算</button>
+
+    <!-- 排名總表 -->
+    <div style="margin-top: 30px; background: #e3d8bf; border-radius: 28px; padding: 16px 20px;">
+        <h3 style="margin:0 0 12px 0;">🏆 即時排名 (勝場數 -> 局分差排序，已完成比賽優先積分)</h3>
+        <div id="rankBoard" style="font-weight:500; display:flex; flex-wrap:wrap; gap:12px; justify-content:flex-start;"></div>
     </div>
+    <footer>※ 五局三勝11分制：每局需先得11分且領先2分；每場比賽勝方獲得1個勝場積分，依照勝場數排名，同勝場比較總得分差(暫不細部，簡單淨勝局)。點擊「更新比分」可記錄單局比分，系統自動判斷勝負。</footer>
 </div>
 
 <script>
-    // ----- 參賽名單 (繁體中文)
+    // ----- 參賽者列表 (保留原本格式)
     const PLAYERS = [
-        "羅嘉熙", "黃駿𧙗", "李文灝", "張梓賢", "華悅恩",
-        "ALESIVAN", "吳家俊", "陳永悅", "陳澤賢", "陳紫漩",
-        "許銘賢", "石振星", "張思澈"
+        "羅嘉熙", "黃駿𧙗", "李文灝", "張梓賢", "華悅恩", "ALESIVAN",
+        "吳家俊", "陳永悅", "陳澤賢", "陳紫漩", "許銘賢", "石振星", "張思澈"
     ];
-
-    // 輔助: 確保 name 正確 黃駿𧙗 特殊字保留
-    // 產生所有對戰組合 (單循環 i<j)
+    
+    // ----- 生成所有對戰組合 (單循環) 每兩人對戰一場
     function generateMatches(players) {
-        const matches = [];
+        let matches = [];
+        let id = 1;
         for (let i = 0; i < players.length; i++) {
             for (let j = i+1; j < players.length; j++) {
                 matches.push({
-                    id: `m_${i}_${j}`,
+                    id: id++,
                     playerA: players[i],
                     playerB: players[j],
-                    // 儲存每局比分結構: 最多打5局, 每局[a分數, b分數] 或 null未打
-                    games: [[null,null], [null,null], [null,null], [null,null], [null,null]],
-                    winner: null,   // 'A', 'B' 或 null
-                    completed: false // 是否完成比賽 (一方贏得3局)
+                    // 儲存每一局比分: 預設五局皆為 null/未打，採用陣列 [局1A,局1B, 局2A,局2B, 局3A,局3B, 局4A,局4B, 局5A,局5B]
+                    sets: [null,null, null,null, null,null, null,null, null,null], // 最多五局
+                    winner: null,   // null 或 playerName
+                    completed: false,
+                    // 記錄最後更新比分後算出的勝者局數
+                    aWins: 0,
+                    bWins: 0
                 });
             }
         }
         return matches;
     }
-
+    
     let matchesData = generateMatches(PLAYERS);
-
-    // 輔助: 根據目前games陣列, 判斷勝者及完成狀態 (5局3勝)
-    function updateMatchWinner(match) {
-        let scoreA = 0, scoreB = 0;
-        for (let i = 0; i < 5; i++) {
-            const game = match.games[i];
-            if (game && game[0] !== null && game[1] !== null) {
-                // 有效比分才比較
-                if (game[0] > game[1]) scoreA++;
-                else if (game[1] > game[0]) scoreB++;
+    
+    // 輔助: 根據每場 sets 陣列計算誰勝出 (五局三勝)
+    function computeWinnerFromSets(match) {
+        let aWins = 0, bWins = 0;
+        for (let i = 0; i < 5; i++) { // 最多5局
+            let scoreA = match.sets[i*2];
+            let scoreB = match.sets[i*2+1];
+            if (scoreA !== null && scoreB !== null && typeof scoreA === 'number' && typeof scoreB === 'number') {
+                if (scoreA > scoreB) aWins++;
+                else if (scoreB > scoreA) bWins++;
+                if (aWins >= 3 || bWins >= 3) break;
             } else {
-                break; // 後面未打視同尚未分出勝負
+                // 如果有局未完成就打斷
+                break;
             }
         }
-        if (scoreA >= 3) {
-            match.winner = 'A';
-            match.completed = true;
-        } else if (scoreB >= 3) {
-            match.winner = 'B';
-            match.completed = true;
-        } else {
-            // 尚未有人3勝，檢查是否所有局已打完(理論上最多5局但若雙方都未滿3勝但5局打滿即平局?但規則五局三勝制，打完5局一定會有人>=3勝)
-            // 但避免邏輯錯誤: 如果5局都填滿但分數都有效，自動檢查上面就會決定勝者。
-            // 若都沒有3勝但全部5局比分填滿不可能發生(因單局必有勝負 最多2:2後第五局勝者3勝)
-            // 額外安全處理:
-            let allFilled = true;
-            for(let i=0;i<5;i++){
-                if(!match.games[i] || match.games[i][0]===null || match.games[i][1]===null){
-                    allFilled = false; break;
+        match.aWins = aWins;
+        match.bWins = bWins;
+        if (aWins >= 3) return match.playerA;
+        if (bWins >= 3) return match.playerB;
+        return null;
+    }
+    
+    // 更新單場勝者及完成狀態
+    function updateMatchWinner(match) {
+        let winner = computeWinnerFromSets(match);
+        match.winner = winner;
+        // 完成條件: 有贏家 (已贏三局)
+        match.completed = (winner !== null);
+        return winner;
+    }
+    
+    // 儲存資料至 localStorage (可選)
+    function saveData() {
+        localStorage.setItem('pingpong_matches', JSON.stringify(matchesData));
+    }
+    
+    function loadData() {
+        const stored = localStorage.getItem('pingpong_matches');
+        if (stored) {
+            try {
+                let parsed = JSON.parse(stored);
+                if (Array.isArray(parsed) && parsed.length === matchesData.length) {
+                    matchesData = parsed;
+                    // 確保每個match都有新的欄位相容
+                    matchesData.forEach(m => {
+                        if (!m.sets) m.sets = [null,null,null,null,null,null,null,null,null,null];
+                        if (m.aWins === undefined) m.aWins = 0;
+                        if (m.bWins === undefined) m.bWins = 0;
+                        updateMatchWinner(m);
+                    });
+                }
+            } catch(e) {}
+        }
+    }
+    
+    // 計算選手勝場數 + 淨勝局分 (簡單局分差: 總得分-總失分, 若平手則依勝場排序)
+    function computeRanking() {
+        let stats = {};
+        PLAYERS.forEach(p => { stats[p] = { wins: 0, totalScoreDiff: 0, setsWon: 0, setsLost: 0 }; });
+        
+        matchesData.forEach(match => {
+            if (match.completed && match.winner) {
+                // 勝場增加
+                stats[match.winner].wins += 1;
+                // 計算局分差: 每局加 (我方得分 - 對方得分)
+                let aPlayer = match.playerA;
+                let bPlayer = match.playerB;
+                for (let i=0; i<5; i++) {
+                    let sA = match.sets[i*2];
+                    let sB = match.sets[i*2+1];
+                    if (sA !== null && sB !== null) {
+                        if (aPlayer === match.winner) {
+                            stats[aPlayer].totalScoreDiff += (sA - sB);
+                            stats[bPlayer].totalScoreDiff += (sB - sA);
+                        } else {
+                            stats[bPlayer].totalScoreDiff += (sB - sA);
+                            stats[aPlayer].totalScoreDiff += (sA - sB);
+                        }
+                        // 累計局勝負(次要)
+                        if (sA > sB) { stats[aPlayer].setsWon++; stats[bPlayer].setsLost++; }
+                        else if(sB > sA) { stats[bPlayer].setsWon++; stats[aPlayer].setsLost++; }
+                    }
                 }
             }
-            if(allFilled){
-                // 再強制計算一次 (理論上上面邏輯就能抓到)
-                let aW=0,bW=0;
-                for(let i=0;i<5;i++){
-                    if(match.games[i][0] > match.games[i][1]) aW++;
-                    else if(match.games[i][1] > match.games[i][0]) bW++;
+        });
+        // 轉陣列排序
+        let rankingList = PLAYERS.map(p => ({
+            name: p,
+            wins: stats[p].wins,
+            diff: stats[p].totalScoreDiff,
+            setsWon: stats[p].setsWon,
+            setsLost: stats[p].setsLost
+        }));
+        rankingList.sort((a,b) => {
+            if (a.wins !== b.wins) return b.wins - a.wins;
+            if (a.diff !== b.diff) return b.diff - a.diff;
+            return (b.setsWon - b.setsLost) - (a.setsWon - a.setsLost);
+        });
+        // 加名次標記
+        let rank = 1;
+        for (let i=0; i<rankingList.length; i++) {
+            if (i>0 && (rankingList[i].wins !== rankingList[i-1].wins || rankingList[i].diff !== rankingList[i-1].diff)) {
+                rank = i+1;
+            }
+            rankingList[i].rank = rank;
+        }
+        return rankingList;
+    }
+    
+    // 渲染對陣表 (含比分輸入框)
+    function renderMatches() {
+        const tbody = document.getElementById('matchTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        matchesData.forEach(match => {
+            const row = tbody.insertRow();
+            // 場次
+            const cellId = row.insertCell(0);
+            cellId.innerText = match.id;
+            // 選手A
+            const cellA = row.insertCell(1);
+            cellA.innerText = match.playerA;
+            cellA.className = 'player-name';
+            // 選手B
+            const cellB = row.insertCell(2);
+            cellB.innerText = match.playerB;
+            cellB.className = 'player-name';
+            // 比分欄位: 五局輸入框
+            const cellScore = row.insertCell(3);
+            cellScore.style.minWidth = '220px';
+            // 動態產生五組局分輸入框
+            let setsHtml = `<div style="display:flex; flex-wrap:wrap; gap:6px; justify-content:center;">`;
+            for (let i = 0; i < 5; i++) {
+                const idxA = i*2;
+                const idxB = i*2+1;
+                const valA = match.sets[idxA] !== null ? match.sets[idxA] : '';
+                const valB = match.sets[idxB] !== null ? match.sets[idxB] : '';
+                setsHtml += `<div style="background:#f4e9d8; border-radius:16px; padding:4px 6px;"><small>局${i+1}</small><br>
+                            <input type="number" class="score-input set-a" data-matchid="${match.id}" data-setidx="${idxA}" value="${valA}" placeholder="A" style="width:50px;"> :
+                            <input type="number" class="score-input set-b" data-matchid="${match.id}" data-setidx="${idxB}" value="${valB}" placeholder="B" style="width:50px;"></div>`;
+            }
+            setsHtml += `</div><div class="set-detail">※ 五局三勝，每局11分(需領先2分)</div>`;
+            cellScore.innerHTML = setsHtml;
+            
+            // 操作按鈕 (更新比分)
+            const cellAction = row.insertCell(4);
+            const updateBtn = document.createElement('button');
+            updateBtn.innerText = '✏️ 更新比分';
+            updateBtn.className = 'update-btn';
+            updateBtn.style.background = '#3c6e47';
+            updateBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // 收集當前該場的所有輸入框的值
+                const matchObj = match;
+                for (let i=0; i<5; i++) {
+                    const aInput = document.querySelector(`input.set-a[data-matchid="${match.id}"][data-setidx="${i*2}"]`);
+                    const bInput = document.querySelector(`input.set-b[data-matchid="${match.id}"][data-setidx="${i*2+1}"]`);
+                    if (aInput && bInput) {
+                        let aVal = aInput.value.trim() === '' ? null : Number(aInput.value);
+                        let bVal = bInput.value.trim() === '' ? null : Number(bInput.value);
+                        if (aVal !== null && bVal !== null && !isNaN(aVal) && !isNaN(bVal)) {
+                            // 簡單驗證11分制且至少贏2分，但使用者自行負責合理性，不過我們可以提醒。
+                            if (aVal < 0 || bVal < 0) { alert('分數不可為負數'); return; }
+                            if ((aVal >= 11 || bVal >= 11) && Math.abs(aVal - bVal) < 2 && (aVal!==bVal)) {
+                                if(!confirm(`第${i+1}局 ${aVal}:${bVal} 未滿足領先2分，確定仍記錄？`)) return;
+                            }
+                            matchObj.sets[i*2] = aVal;
+                            matchObj.sets[i*2+1] = bVal;
+                        } else {
+                            // 若任意一方為空代表未打，設為null
+                            matchObj.sets[i*2] = null;
+                            matchObj.sets[i*2+1] = null;
+                        }
+                    }
                 }
-                if(aW>=3) {match.winner='A'; match.completed=true;}
-                else if(bW>=3) {match.winner='B'; match.completed=true;}
-                else {match.winner=null; match.completed=false;}
-            } else {
+                // 重新計算勝者
+                const winner = updateMatchWinner(matchObj);
+                saveData();
+                renderMatches();      // 重新刷新表格
+                renderRankingBoard();
+                // 若目前有查詢結果則重新顯示查詢
+                const currentSearch = document.getElementById('searchName').value.trim();
+                if (currentSearch !== "") showPlayerSchedule(currentSearch);
+                else document.getElementById('searchResultArea').innerHTML = '';
+            });
+            cellAction.appendChild(updateBtn);
+            // 重置按鈕 (清空該場比分)
+            const resetBtn = document.createElement('button');
+            resetBtn.innerText = '🗑️ 清空';
+            resetBtn.className = 'update-btn';
+            resetBtn.style.marginLeft = '8px';
+            resetBtn.style.background = '#b65f2e';
+            resetBtn.addEventListener('click', () => {
+                for(let i=0;i<5;i++) {
+                    match.sets[i*2] = null;
+                    match.sets[i*2+1] = null;
+                }
                 match.winner = null;
                 match.completed = false;
-            }
-        }
-        // 若winner存在但未完成狀態同步
-        if(match.winner) match.completed = true;
-        return match;
-    }
-
-    // 計算所有球員的統計 (勝場,負場,總得分差, 總勝局數, 總負局數)
-    function computeStatistics() {
-        const stats = {};
-        PLAYERS.forEach(p => {
-            stats[p] = { wins: 0, losses: 0, totalPointsDiff: 0, gamesWon: 0, gamesLost: 0 };
-        });
-        matchesData.forEach(match => {
-            if (!match.completed || !match.winner) return;
-            const pA = match.playerA;
-            const pB = match.playerB;
-            // 計算局分差和單局得分差
-            let aGamesWon = 0, bGamesWon = 0;
-            let aTotalPoints = 0, bTotalPoints = 0;
-            for (let i=0;i<5;i++) {
-                const g = match.games[i];
-                if(g && g[0] !== null && g[1] !== null){
-                    aTotalPoints += g[0];
-                    bTotalPoints += g[1];
-                    if(g[0] > g[1]) aGamesWon++;
-                    else if(g[1] > g[0]) bGamesWon++;
-                }
-            }
-            // 勝負場次
-            if(match.winner === 'A') {
-                stats[pA].wins += 1;
-                stats[pB].losses += 1;
+                match.aWins = 0;
+                match.bWins = 0;
+                saveData();
+                renderMatches();
+                renderRankingBoard();
+                const searchNm = document.getElementById('searchName').value.trim();
+                if(searchNm !== "") showPlayerSchedule(searchNm);
+                else document.getElementById('searchResultArea').innerHTML = '';
+            });
+            cellAction.appendChild(resetBtn);
+            
+            // 勝者/狀態欄
+            const cellStatus = row.insertCell(5);
+            if (match.completed && match.winner) {
+                cellStatus.innerHTML = `<span class="rank-badge">🏅 勝者: ${match.winner}</span> <span style="font-size:0.7rem;"> (${match.aWins}:${match.bWins})</span>`;
+                row.classList.add('completed');
             } else {
-                stats[pB].wins += 1;
-                stats[pA].losses += 1;
+                let progress = '';
+                if (match.aWins >0 || match.bWins>0) progress = `目前局分 ${match.aWins} : ${match.bWins}`;
+                cellStatus.innerHTML = `<span style="color:#9b6a3c;">⏳ 未完成</span><br><small>${progress}</small>`;
             }
-            stats[pA].gamesWon += aGamesWon;
-            stats[pA].gamesLost += bGamesWon;
-            stats[pB].gamesWon += bGamesWon;
-            stats[pB].gamesLost += aGamesWon;
-            // 總得分差 = 總得分 - 總失分
-            stats[pA].totalPointsDiff += (aTotalPoints - bTotalPoints);
-            stats[pB].totalPointsDiff += (bTotalPoints - aTotalPoints);
         });
-        return stats;
     }
-
-    // 產生排名 (依照勝場 > 總得分差 > 勝局率 ? 但按照傳統乒乓球: 勝場多 > 相互戰績(但簡化用勝場+得分差,額外可再比較對戰,為簡單清晰: 勝場 -> 總得分差 -> 勝局數差)
-    function getRanking() {
-        const stats = computeStatistics();
-        const playersWithStats = PLAYERS.map(name => ({
-            name,
-            wins: stats[name].wins,
-            losses: stats[name].losses,
-            pointsDiff: stats[name].totalPointsDiff,
-            gamesWon: stats[name].gamesWon,
-            gamesLost: stats[name].gamesLost
-        }));
-        playersWithStats.sort((a,b) => {
-            if(a.wins !== b.wins) return b.wins - a.wins;
-            if(a.pointsDiff !== b.pointsDiff) return b.pointsDiff - a.pointsDiff;
-            const aWinRate = a.gamesWon - a.gamesLost;
-            const bWinRate = b.gamesWon - b.gamesLost;
-            return bWinRate - aWinRate;
-        });
-        return playersWithStats;
-    }
-
-    // 渲染全部對陣表 (動態綁定input事件)
-    function renderMatches() {
-        const container = document.getElementById('matchesContainer');
-        container.innerHTML = '';
-        matchesData.forEach((match, idx) => {
+    
+    // 顯示排名榜
+    function renderRankingBoard() {
+        const ranking = computeRanking();
+        const rankDiv = document.getElementById('rankBoard');
+        if(!rankDiv) return;
+        rankDiv.innerHTML = '';
+        ranking.forEach(r => {
             const card = document.createElement('div');
-            card.className = 'match-card';
-            const matchIdShort = `${match.playerA} vs ${match.playerB}`;
-            // 判斷目前比賽狀態
-            let statusText = '';
-            if(match.completed && match.winner){
-                const winnerName = match.winner === 'A' ? match.playerA : match.playerB;
-                statusText = `🏆 勝方：${winnerName}`;
-            } else {
-                const aWinCount = countGamesWon(match, 'A');
-                const bWinCount = countGamesWon(match, 'B');
-                statusText = `📌 目前局數 ${aWinCount} : ${bWinCount} (五局三勝)`;
-            }
-
-            card.innerHTML = `
-                <div class="match-header">
-                    <span class="match-id">⚡ 對戰編號 ${idx+1}</span>
-                    <span class="best-of">🏓 五局三勝 | 11分制</span>
-                    <span class="match-result-status">${statusText}</span>
-                </div>
-                <div class="players-area">
-                    <div class="player-col">
-                        <div class="player-name"><span class="name-tag">🟢 A</span> ${escapeHtml(match.playerA)}</div>
-                        <div class="games-row" id="gamesA_${idx}"></div>
-                        <div class="win-badge" id="winnerBadgeA_${idx}" style="background:#6f4e2e; display:${match.winner==='A'?'inline-block':'none'}">✓ 勝出</div>
-                    </div>
-                    <div class="player-col">
-                        <div class="player-name"><span class="name-tag">🔵 B</span> ${escapeHtml(match.playerB)}</div>
-                        <div class="games-row" id="gamesB_${idx}"></div>
-                        <div class="win-badge" id="winnerBadgeB_${idx}" style="background:#6f4e2e; display:${match.winner==='B'?'inline-block':'none'}">✓ 勝出</div>
-                    </div>
-                </div>
-                <div style="padding: 6px 20px 14px 20px;">
-                    <button class="action-btn" data-matchidx="${idx}" data-reset="true">🗑️ 重置此場比分</button>
-                </div>
-            `;
-            container.appendChild(card);
-            // 渲染每一局的輸入框 (五局)
-            const gamesAContainer = document.getElementById(`gamesA_${idx}`);
-            const gamesBContainer = document.getElementById(`gamesB_${idx}`);
-            for(let g=0; g<5; g++) {
-                const gameAVal = (match.games[g] && match.games[g][0] !== null) ? match.games[g][0] : '';
-                const gameBVal = (match.games[g] && match.games[g][1] !== null) ? match.games[g][1] : '';
-                const gameDivA = createGameInput(g, 'A', idx, gameAVal);
-                const gameDivB = createGameInput(g, 'B', idx, gameBVal);
-                gamesAContainer.appendChild(gameDivA);
-                gamesBContainer.appendChild(gameDivB);
-            }
-        });
-        // 綁定所有比分變更事件 & 重置按鈕
-        attachScoreEvents();
-        attachResetMatchEvents();
-    }
-
-    function countGamesWon(match, side) {
-        let count = 0;
-        for(let i=0;i<5;i++){
-            const g = match.games[i];
-            if(g && g[0]!==null && g[1]!==null){
-                if(side === 'A' && g[0] > g[1]) count++;
-                if(side === 'B' && g[1] > g[0]) count++;
-            }
-        }
-        return count;
-    }
-
-    function createGameInput(gameIdx, side, matchIdx, currentVal) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'game-box';
-        const label = document.createElement('div');
-        label.className = 'game-label';
-        label.innerText = `第${gameIdx+1}局`;
-        const input = document.createElement('input');
-        input.type = 'number';
-        input.className = 'game-score';
-        input.placeholder = '分';
-        input.value = (currentVal !== '' && currentVal !== null) ? currentVal : '';
-        input.min = 0;
-        input.max = 99;
-        input.step = 1;
-        input.setAttribute('data-matchidx', matchIdx);
-        input.setAttribute('data-gameidx', gameIdx);
-        input.setAttribute('data-side', side);
-        wrapper.appendChild(label);
-        wrapper.appendChild(input);
-        return wrapper;
-    }
-
-    function attachScoreEvents() {
-        const allInputs = document.querySelectorAll('.game-score');
-        allInputs.forEach(inp => {
-            inp.removeEventListener('change', handleScoreChange);
-            inp.addEventListener('change', handleScoreChange);
+            card.style.background = '#fff3e0';
+            card.style.borderRadius = '60px';
+            card.style.padding = '6px 16px';
+            card.style.boxShadow = '0 1px 4px rgba(0,0,0,0.1)';
+            card.style.display = 'inline-flex';
+            card.style.alignItems = 'center';
+            card.style.gap = '10px';
+            card.innerHTML = `<strong>#${r.rank}</strong> ${r.name} <span style="color:#3f6b2d;">🏆勝場:${r.wins}</span> <small style="color:#a5713c;">局差:${r.diff}</small>`;
+            rankDiv.appendChild(card);
         });
     }
-
-    function handleScoreChange(e) {
-        const input = e.target;
-        const matchIdx = parseInt(input.getAttribute('data-matchidx'));
-        const gameIdx = parseInt(input.getAttribute('data-gameidx'));
-        const side = input.getAttribute('data-side');
-        let rawValue = input.value.trim() === '' ? null : parseInt(input.value, 10);
-        if(rawValue !== null && (isNaN(rawValue) || rawValue < 0)) rawValue = 0;
-        const match = matchesData[matchIdx];
-        if(!match) return;
-        // 初始化games[gameIdx]
-        if(!match.games[gameIdx]) match.games[gameIdx] = [null, null];
-        if(side === 'A') {
-            match.games[gameIdx][0] = (rawValue !== null ? rawValue : null);
-        } else {
-            match.games[gameIdx][1] = (rawValue !== null ? rawValue : null);
+    
+    // 查詢特定球員所有比賽 (顯示對手, 場次, 比分現況)
+    function showPlayerSchedule(playerName) {
+        const exactPlayer = PLAYERS.find(p => p === playerName);
+        if (!exactPlayer) {
+            document.getElementById('searchResultArea').innerHTML = `<div class="result-card" style="border-left-color:#b35f2e;">❌ 找不到「${playerName}」，請確認姓名正確 (包含大小寫/英文名)</div>`;
+            return;
         }
-        // 有效性檢查：如果雙方分數都不為空，且有一方>=11，需檢查deuce合理性 (deuce時領先2分勝出)
-        const aScore = match.games[gameIdx][0];
-        const bScore = match.games[gameIdx][1];
-        if(aScore !== null && bScore !== null){
-            if( (aScore >=11 || bScore>=11) && Math.abs(aScore-bScore) >=2 ){
-                // 有效比分，保留
-            } else if(aScore >=11 || bScore>=11){
-                // 雖大於11但未贏2分，可以警告但不強制修正，給使用者彈性但確保若不符合邏輯以提示
-                if( Math.abs(aScore-bScore) < 2 ){
-                    // 暫不強制，顯示提醒可自動修正但不影響體驗，我們可以提醒但保留由使用者調整
-                    console.log("deuce需贏2分");
+        const myMatches = matchesData.filter(m => m.playerA === exactPlayer || m.playerB === exactPlayer);
+        if (myMatches.length === 0) {
+            document.getElementById('searchResultArea').innerHTML = `<div class="result-card">🏓 ${exactPlayer} 目前沒有任何賽程？</div>`;
+            return;
+        }
+        let html = `<div class="result-card"><h3>🏓 ${exactPlayer} 的個人賽程表</h3><div class="match-schedule">`;
+        myMatches.forEach(m => {
+            const opponent = m.playerA === exactPlayer ? m.playerB : m.playerA;
+            let scoreText = '';
+            let setDetail = '';
+            for(let i=0;i<5;i++) {
+                let sa = m.sets[i*2];
+                let sb = m.sets[i*2+1];
+                if(sa !== null && sb !== null) {
+                    setDetail += `局${i+1}: ${sa}-${sb} `;
+                } else {
+                    if(i===0 && sa===null && sb===null) setDetail = `尚未記錄任何局分`;
+                    break;
                 }
             }
-        }
-        // 重新計算勝者
-        updateMatchWinner(match);
-        // 重新渲染UI以更新勝者徽章和狀態文字（不重建全部？最好局部刷新）
-        renderMatches();     // 重新渲染更新比分&狀態
-        renderRanking();     // 同時更新排名
-    }
-
-    function attachResetMatchEvents() {
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            btn.removeEventListener('click', resetMatchHandler);
-            btn.addEventListener('click', resetMatchHandler);
-        });
-    }
-
-    function resetMatchHandler(e) {
-        const btn = e.currentTarget;
-        const matchIdx = btn.getAttribute('data-matchidx');
-        if(matchIdx !== null) {
-            const idx = parseInt(matchIdx);
-            const match = matchesData[idx];
-            // 重置所有局數分數
-            for(let i=0;i<5;i++) {
-                match.games[i] = [null, null];
+            if (m.completed && m.winner) {
+                let myWin = (m.winner === exactPlayer);
+                scoreText = myWin ? '✅ 勝利' : '❌ 落敗';
+                let finalScore = `${m.aWins}:${m.bWins}`;
+                scoreText += ` (${finalScore})`;
+            } else {
+                let currentWin = (m.aWins>0 || m.bWins>0) ? `目前局分 ${m.aWins}:${m.bWins}` : '未開賽';
+                scoreText = `⏳ ${currentWin}`;
             }
-            match.winner = null;
-            match.completed = false;
-            renderMatches();
-            renderRanking();
-        }
-    }
-
-    function renderRanking() {
-        const ranking = getRanking();
-        const tbody = document.getElementById('rankTbody');
-        tbody.innerHTML = '';
-        ranking.forEach((playerStat, idx) => {
-            const row = tbody.insertRow();
-            const rankCell = row.insertCell(0);
-            rankCell.innerText = idx+1;
-            if(idx===0) rankCell.classList.add('gold-medal');
-            row.insertCell(1).innerText = playerStat.name;
-            row.insertCell(2).innerText = playerStat.wins;
-            row.insertCell(3).innerText = playerStat.losses;
-            row.insertCell(4).innerText = playerStat.pointsDiff;
-            row.insertCell(5).innerText = `${playerStat.gamesWon} - ${playerStat.gamesLost}`;
+            html += `<p><strong>🏓 場次 ${m.id}</strong>  VS 對手: <strong>${opponent}</strong> &nbsp; ${scoreText}<br><span style="font-size:0.8rem;">${setDetail || '請輸入比分後更新'}</span></p>`;
         });
-        if(ranking.length === 0){
-            tbody.innerHTML = '<tr><td colspan="6">請輸入比分進行結算</td></tr>';
-        }
+        html += `</div><div style="margin-top:10px;"><em>💡 請在上方對陣表對應場次輸入每局比分，再按「更新比分」</em></div></div>`;
+        document.getElementById('searchResultArea').innerHTML = html;
     }
-
-    function escapeHtml(str) {
-        return str.replace(/[&<>]/g, function(m) {
-            if(m === '&') return '&amp;';
-            if(m === '<') return '&lt;';
-            if(m === '>') return '&gt;';
-            return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
+    
+    // 清除查詢
+    function clearSearch() {
+        document.getElementById('searchName').value = '';
+        document.getElementById('searchResultArea').innerHTML = '';
+    }
+    
+    // 監聽查詢按鈕
+    function bindSearchEvent() {
+        const btn = document.getElementById('searchBtn');
+        const clearBtn = document.getElementById('clearSearchBtn');
+        const searchInput = document.getElementById('searchName');
+        btn.addEventListener('click', () => {
+            const name = searchInput.value.trim();
+            if(name === "") {
+                alert("請輸入參賽者姓名");
+                return;
+            }
+            showPlayerSchedule(name);
+        });
+        clearBtn.addEventListener('click', clearSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') btn.click();
         });
     }
-
-    // 重置全部比分
-    function resetAllScores() {
-        matchesData = generateMatches(PLAYERS);
-        renderMatches();
-        renderRanking();
-    }
-
+    
     // 初始化
     function init() {
+        loadData();
+        // 重新校正勝者
+        matchesData.forEach(m => updateMatchWinner(m));
         renderMatches();
-        renderRanking();
-        document.getElementById('resetAllBtn').addEventListener('click', () => resetAllScores());
-        document.getElementById('refreshRankBtn').addEventListener('click', () => {
-            renderRanking();
-            // 也可重新檢查所有match完整性
-            renderMatches(); // 確保狀態同步
-        });
+        renderRankingBoard();
+        bindSearchEvent();
     }
-
+    
     init();
 </script>
 </body>
